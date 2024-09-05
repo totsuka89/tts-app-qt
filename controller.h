@@ -1,25 +1,36 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "model.h"
-#include "mainwindow.h"
 #include <QObject>
+#include <QStringView>
 
-class Controller : public QObject
-{
+#include "mainwindow.h"
+#include "model/model.h"
+
+class Controller : public QObject {
     Q_OBJECT
-public:
-    Controller(Model *model, MainWindow *view);
+
+   public:
+    explicit Controller(MainWindow* view);
+
+    virtual ~Controller();
 
     void initialize();
 
-// private slots:
-//     void onAddItem();
-//     void onRemoveItem();
+   private slots:
+    void onChangedText(QString name);
 
-private:
-    Model *model;
-    MainWindow *view;
+    void onClickedPlay();
+
+    void onClickedSave();
+
+   private:
+    void setModel(const QStringView name);
+
+    void updateView(const QStringView name) const;
+
+    Model* m_model;
+    MainWindow* m_view;
 };
 
-#endif // CONTROLLER_H
+#endif  // CONTROLLER_H

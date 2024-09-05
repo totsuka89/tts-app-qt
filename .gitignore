@@ -69,6 +69,8 @@ CMakeLists.txt.user*
 
 # Binaries
 # --------
-*.dll
 *.exe
 
+# build
+/Build/
+Build/**

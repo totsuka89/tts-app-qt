@@ -1,34 +1,26 @@
 #include "mainwindow.h"
+
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    getComboBoxEngine()->addItems(m_engines);
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
+MainWindow::~MainWindow() { delete ui; }
 
-QComboBox* MainWindow::getComboBoxEngine() {
-    return ui->comboBoxEngine;
-}
+QComboBox* MainWindow::getComboBoxEngine() const { return ui->comboBoxEngine; }
 
-QComboBox* MainWindow::getComboBoxLanguage() {
-    return ui->comboBoxLanguage;
-}
+QComboBox* MainWindow::getComboBoxLanguage() const { return ui->comboBoxLanguage; }
 
-QTextEdit* MainWindow::getTextEdit() {
-    return ui->textEdit;
-}
+QLabel* MainWindow::getLabelOption() const { return ui->labelOption; }
 
-QPushButton* MainWindow::getButtonPlay() {
-    return ui->buttonPlay;
-}
+QLineEdit* MainWindow::getLineEditOption() const { return ui->lineEditOption; }
 
-QPushButton* MainWindow::getButtonSave() {
-    return ui->buttonSave;
-}
+QTextEdit* MainWindow::getTextEdit() const { return ui->textEdit; }
+
+QPushButton* MainWindow::getButtonPlay() const { return ui->buttonPlay; }
+
+QPushButton* MainWindow::getButtonSave() const { return ui->buttonSave; }
+
+AudioPlayer& MainWindow::getAudioPlayer() { return m_player; }
